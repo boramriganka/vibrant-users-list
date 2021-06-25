@@ -8,6 +8,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 function CreateUser(params) {
   const [user, setUser] = useState({
     name: "",
+    email:"",
     password: ""
   });
 
