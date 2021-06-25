@@ -29,10 +29,6 @@ function App() {
 
       <CreateUser newUser={addUser} />
 
-      <div className="users-container">
-      
-      </div>
-
     </div>
   );
 }
