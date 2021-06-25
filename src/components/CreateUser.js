@@ -3,7 +3,6 @@ import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
 import TextField from '@material-ui/core/TextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 
 function CreateUser(params) {
   const [user, setUser] = useState({
@@ -15,7 +14,7 @@ function CreateUser(params) {
  
   function storeUser(event) {
     const { value, name } = event.target;
-
+    // take the object and add the new name ,value pair to user object and return it.
     setUser(preValue => {
       return {
         ...preValue,
@@ -28,7 +27,7 @@ function CreateUser(params) {
     event.preventDefault();
 
     params.newUser(user);
-    
+    console.log(user)
     setUser({
       name: "",
       email:"",

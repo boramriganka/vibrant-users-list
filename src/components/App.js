@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import User from "./User";
 import CreateUser from "./CreateUser";
 import "../App.css"
 
@@ -24,14 +23,7 @@ function App() {
     }
   }
 
-  function deleteUser(id) {
-    setUserArray((preValue) => {
-      return preValue.filter((eachUser, index) => {
-        return index !== id;
-      });
-    });
-  }
-
+  
   return (
     <div className="Container">
 
