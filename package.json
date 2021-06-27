@@ -5,10 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "formik": "^2.2.9",
+    "formik-persist": "^1.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",

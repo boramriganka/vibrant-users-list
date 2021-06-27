@@ -20,19 +20,34 @@ body {
 }
 
 header {
-  background-color: #f5ba13;
+  background-color: #dadbd3;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  
 }
 
 header h1 {
-  color: #fff;
+  color:#ee2424;
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
+header h1:hover {
+  color:#bd6666;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+}
+
 .Container{
   display: grid;
   place-items: center;
+}
+
+.Header{
+  text-align: center;
+  width: 100%;
+  margin: 0.3rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.5rem;
 }
 .User {
   background: #fff;
@@ -44,7 +59,12 @@ header h1 {
   float: left;
 }
 .users-link h1{
-  color: #ee2424;
+  color:#ee2424;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+}
+.users-link h1:hover{
+  color:#bd6666;
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
@@ -126,4 +146,48 @@ form.create-user button {
   header{
     padding: 13px 25px;
   }
+}
+
+.error{
+  color: #ee2424;
+}
+.container{
+  margin-top: 3rem;
+}
+.formfield{
+  margin-top: 1rem;
+}
+.User{
+  background-color: #dadbd3;
+  display: flex;
+  height: 15rem;
+  width: 15rem;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 0.7rem 0.7rem;
+  margin: 1rem auto;
+  box-shadow: 12px 12px 32px rgba(13, 39, 80, 0.25), -10px -10px 15px white;
+}
+
+.User h1{
+  color : #000000;
+  letter-spacing: 0.1rem;
+  font-size :1rem;
+  font-weight: 300;
+}
+span{
+  font-size: larger;
+  font-weight: 700;
+}
+h2{
+  letter-spacing: 0.1rem;
+  font-size :1rem;
+  font-weight: 300;
+}
+.submit-btn{
+  background-color: #f5ba13;
+  color: #484848;
+  box-shadow: inset 4px 4px 8px rgba(13, 39, 80, 0.25),
+  inset -4px -4px 8px white;
 }
