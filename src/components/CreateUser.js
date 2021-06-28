@@ -72,6 +72,7 @@ const CreateUser = () => {
 
   const formik = useFormik({
     initialValues: {
+      name:'',
       email: '',
       password: '',
     },
