@@ -5,8 +5,10 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "formik": "^2.2.9",
     "formik-persist": "^1.1.0",
+    "notistack": "^1.0.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",

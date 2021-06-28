@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
-import AddIcon from "@material-ui/icons/Add";
-import Fab from "@material-ui/core/Fab";
-import Zoom from "@material-ui/core/Zoom";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { Grid, Typography } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { Grid, Paper, Avatar, TextField, Button, Snackbar } from '@material-ui/core'
 import {
   useFormik, Formik, Form, Field,
   ErrorMessage,
-  FieldArray,
-  FastField
 } from "formik";
 import * as yup from 'yup'
-import Paper from '@material-ui/core/Paper';
+
 
 const initialValues = {
   name: '',
@@ -34,7 +30,23 @@ const validationSchema = yup.object({
 
 
 const CreateUser = () => {
+  const [open, setOpen] = React.useState(false);
 
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const paperStyle = { padding: 20, height: '90vh', width: 400, margin: "20px auto" }
+  const inputStyle = { padding: "0 20", width: '15rem', height: "5rem", margin: "0 2rem" }
+  const avatarStyle = { backgroundColor: '#1bbd7e' }
+  const btnstyle = { margin: '8px 0' }
 
   /********saving to locastroage part starts********* */
 
@@ -74,6 +86,7 @@ const CreateUser = () => {
     submitProps.setSubmitting(false)
     submitProps.resetForm()
   };
+
   console.log("submitting......", JSON.stringify(localStorage.getItem("users"), null, 2))
 
   /********saving to locastroage part starts********* */
@@ -85,79 +98,119 @@ const CreateUser = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       enableReinitialize
-    // validateOnChange={false}
-    // validateOnBlur={false}
-    // validateOnMount
     >
       {formik => {
         return (
-          <Grid contaienr spacing={3}>
-            <div className="Header">
-              <p>Create Users !</p>
+          <Grid>
+            <Paper elevation={10} style={paperStyle}>
+              <Form className="container" >
+                <Grid align='center'>
+                  <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
+                  <h2>Users</h2>
+                </Grid>
+                <Grid align='center'>
+                  <Grid align='center'>
+                    <TextField
+                      style={inputStyle}
+                      id="outlined-basic"
+                      variant="outlined"
+                      autoComplete="off"
+                      type="text"
+                      onChange={formik.handleChange}
+                      name="name"
+                      placeholder="name"
+                      value={formik.values.name}
+                      rows={"3"}
+                    />
+                  </Grid>
+                  <Grid align='center'>
+                  </Grid>
+                </Grid>
+
+
+
+                <Grid align='center'>
+                  <Grid align='center'>
+                    <TextField
+                      style={inputStyle}
+                      id="outlined-basic" variant="outlined"
+                      autoComplete="off"
+                      onChange={formik.handleChange}
+                      name="email"
+                      type="text"
+                      placeholder="email"
+                      value={formik.values.email}
+                      rows={"3"}
+                    />
+                  </Grid>
+                  <Grid align='center'>
+
+                  </Grid>
+                </Grid>
+
+
+                <Grid align='center'>
+                  <Grid align='center'>
+                    <TextField
+                      style={inputStyle}
+                      id="outlined-basic" variant="outlined"
+                      onChange={formik.handleChange}
+                      name="password"
+                      type="text"
+                      placeholder="password"
+                      value={formik.values.password}
+                      rows={"3"}
+                    />
+
+                  </Grid>
+
+                </Grid>
+
+
+                <Grid align='center'>
+                  <Button onClick={handleClick} className="submit-btn" scolor="primary" variant="contained" fullWidth type="submit">
+                    Submit
+                  </Button>
+
+                </Grid>
+
+
+
+              </Form>
+            </Paper>
+            <div>
+              {
+                //Snackbar for errors
+
+                Object.keys(formik.errors).map((value, index) => (
+                  console.log("error values", value),
+                  <Snackbar
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message={<ErrorMessage name={value}>
+                      {error => <div className='error'>{error}</div>}
+                    </ErrorMessage>
+                    }
+                    action={
+                      <React.Fragment>
+                        <Button color="secondary" size="small" onClick={handleClose}>
+                          UNDO
+                        </Button>
+                        <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                          <CloseIcon fontSize="small" />
+                        </IconButton>
+                      </React.Fragment>
+                    }
+                  />
+                ))
+              }
 
             </div>
-            <Form className="container" >
-
-              <Grid
-                item xs={12}>
-
-                <TextField
-
-                  id="outlined-basic"
-                  variant="outlined"
-                  autoComplete="off"
-                  type="text"
-                  onChange={formik.handleChange}
-                  name="name"
-                  placeholder="name"
-                  value={formik.values.name}
-                  rows={"3"}
-                />
-                <ErrorMessage name='name'>
-                  {error => <div className='error'>{error}</div>}
-                </ErrorMessage>
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  id="outlined-basic" variant="outlined"
-                  autoComplete="off"
-                  onChange={formik.handleChange}
-                  name="email"
-                  type="text"
-                  placeholder="email"
-                  value={formik.values.email}
-                  rows={"3"}
-                />
-                <ErrorMessage name='email'>
-                  {error => <div className='error'>{error}</div>}
-                </ErrorMessage>
-              </Grid>
-
-
-              <Grid item xs={12}>
-
-                <TextField
-                  id="outlined-basic" variant="outlined"
-                  onChange={formik.handleChange}
-                  name="password"
-                  type="text"
-                  placeholder="password"
-                  value={formik.values.password}
-                  rows={"3"}
-                />
-                <ErrorMessage name='password'>
-                  {error => <div className='error'>{error}</div>}
-                </ErrorMessage>
-              </Grid>
-
-
-
-              <Button className="submit-btn" scolor="primary" variant="contained" fullWidth type="submit">
-                Submit
-              </Button>
-
-            </Form>
           </Grid>
 
         )
