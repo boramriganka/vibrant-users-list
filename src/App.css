@@ -126,3 +126,40 @@ h2{
   font-size :1rem;
   font-weight: 300;
 }
+
+/*** delete confirmation****/
+
+.custom-ui{
+  background-color: #28bae6;
+  color: #fff;
+}
+.custom-ui .outer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  height: 12rem;
+  width: 24rem;
+}
+.custom-ui .bigdiv{
+  white-space: nowrap;
+  height: 60%
+}
+.custom-ui.samlldiv{
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  width: 100%;
+}
+
+.btn-confirm1,.btn-confirm2{
+  padding: 0.7rem 3rem;
+  background-color: inherit;
+  border: 1px solid #fff;
+  color:white
+}
+
+.btn-confirm1{
+  margin: 1rem;;
+}
