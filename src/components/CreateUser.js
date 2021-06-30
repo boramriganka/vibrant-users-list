@@ -42,10 +42,10 @@ const CreateUser = () => {
 
     setOpen(false);
   };
-  const paperStyle = { padding: 20, height: '80vh', width: 400, margin: "20px auto" }
-  const inputStyle = { padding: "0 20", width: '15rem', height: "5rem", margin: "0 2rem" }
+  const paperStyle = { display:"flex",flexDirection:"column",padding: "2rem 0", height: 'auto', width: "70vw",  maxWidth:"500px", margin:"5vh 0" }
+  const inputStyle = { padding: "0 30", width: '75%', height: "5rem", margin: "0 2rem" }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
-  const btnstyle = { margin: '8px 0' }
+  const btnstyle = { width:"5rem" }
 
   /********saving to locastroage part starts********* */
 
@@ -102,11 +102,11 @@ const CreateUser = () => {
       {formik => {
         return (
           <Grid>
-            <Paper elevation={10} style={paperStyle}>
+            <Paper elevation={5} style={paperStyle}>
               <Form className="container" >
                 <Grid align='center'>
                   <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
-                  <h2>Users</h2>
+                  <h2>Create new users</h2>
                 </Grid>
                 <Grid align='center'>
                   <Grid align='center'>
@@ -168,7 +168,7 @@ const CreateUser = () => {
 
 
                 <Grid align='center'>
-                  <Button onClick={handleClick} className="submit-btn" scolor="primary" variant="contained" fullWidth type="submit">
+                  <Button style={btnstyle} onClick={handleClick} className="submit-btn" scolor="primary" variant="contained" fullWidth type="submit">
                     Submit
                   </Button>
 
