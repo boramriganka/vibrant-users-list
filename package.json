@@ -10,6 +10,7 @@
     "formik-persist": "^1.1.0",
     "notistack": "^1.0.9",
     "react": "^16.13.1",
+    "react-confirm-alert": "^2.7.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
