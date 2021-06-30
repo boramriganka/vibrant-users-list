@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import User from "./User";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-
+import NoUser from "./NoUser";
 
 const Users = () => {
   const [userArray, setUserArray] = useState(() => {
@@ -12,6 +12,7 @@ const Users = () => {
 
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(userArray));
+    console.log(JSON.stringify(localStorage.getItem("users")))
   }, [userArray])
 
   const isThereNoUser = (obj) => {
@@ -67,7 +68,7 @@ const Users = () => {
       {
 
         isThereNoUser(userArray) ?
-          <p> No users exists</p> :
+          <NoUser/> :
           userArray.map((user, index) => {
             return (
               <User
