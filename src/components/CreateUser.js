@@ -28,7 +28,6 @@ const validationSchema = yup.object({
 })
 
 
-
 const CreateUser = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -43,7 +42,7 @@ const CreateUser = () => {
 
     setOpen(false);
   };
-  const paperStyle = { padding: 20, height: '90vh', width: 400, margin: "20px auto" }
+  const paperStyle = { padding: 20, height: '80vh', width: 400, margin: "20px auto" }
   const inputStyle = { padding: "0 20", width: '15rem', height: "5rem", margin: "0 2rem" }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const btnstyle = { margin: '8px 0' }
