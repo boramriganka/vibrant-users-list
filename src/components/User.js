@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
-import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import Paper from '@material-ui/core/Paper'
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -62,7 +62,7 @@ function User(props) {
     <List component="nav" aria-label="main mailbox folders">
       <ListItem style={{textTransform:"capitalize"}}className={classes.field}>
       <Avatar className={classes.green}>
-        <ContactPhoneIcon />
+        <AccountCircleIcon />
       </Avatar>
       {name}
       </ListItem>
