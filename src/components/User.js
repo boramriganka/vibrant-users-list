@@ -14,7 +14,8 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: 250,
+    maxWidth: 350,
+    minWidth:250,
     backgroundColor: theme.palette.background.paper,
   },
   pink: {
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   field:{
     display:'flex',
-    justifyContent:"space-between"
+    justifyContent:"space-between",
+    letterSpacing:1
   },
   btn:{
     height:"1.5rem",
@@ -58,7 +60,7 @@ function User(props) {
     
     <Paper elevation={3}className={classes.root}>
     <List component="nav" aria-label="main mailbox folders">
-      <ListItem className={classes.field}>
+      <ListItem style={{textTransform:"capitalize"}}className={classes.field}>
       <Avatar className={classes.green}>
         <ContactPhoneIcon />
       </Avatar>
@@ -70,7 +72,7 @@ function User(props) {
       </Avatar>
       {email}
       </ListItem>
-      <ListItem  className={classes.field}>
+      <ListItem style={{textTransform:"capitalize"}} className={classes.field}>
       <Avatar className={classes.pink}>
         <LockIcon/>
       </Avatar>
