@@ -19,7 +19,7 @@ const Users = () => {
     return Object.keys(obj).length === 0 ? true : false
   }
 
-  const firstConfirmThenkDelete = (id) => {
+  const firstConfirmThenDelete = (id) => {
     setUserArray((preValue) => {
       return preValue.filter((eachUser, index) => {
         return index !== id;
@@ -42,7 +42,7 @@ const Users = () => {
               <div class="smalldiv">
                   <button className="btn-confirm1"
                     onClick={() => {
-                      firstConfirmThenkDelete(id);
+                      firstConfirmThenDelete(id);
                       onClose();
                     }}
                   >
