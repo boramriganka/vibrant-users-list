@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth:250,
     backgroundColor: theme.palette.background.paper,
   },
+  container:{
+    padding :'1.5rem'
+  },
   pink: {
     color: theme.palette.getContrastText(pink[500]),
     backgroundColor: pink[500],
@@ -32,11 +35,19 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing:1
   },
   btn:{
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center',
     height:"1.5rem",
+    borderRadius:'50%',
+    padding:'1rem',
     width:"1.5rem",
     outline:"none",
     border:"none",
-    textDecoration:"none"
+    textDecoration:"none",
+    "&:hover":{
+      backgroundColor: 'lightblue',
+    }
   },
   deleteBtn:{
     height:"1.5rem",
@@ -59,6 +70,8 @@ function User(props) {
   return (
     
     <Paper elevation={3}className={classes.root}>
+      <div className={classes.container}>
+
     <List component="nav" aria-label="main mailbox folders">
       <ListItem style={{textTransform:"capitalize"}}className={classes.field}>
       <Avatar className={classes.green}>
@@ -84,9 +97,10 @@ function User(props) {
           <DeleteIcon />
         </Avatar>
       </button>
-    <Divider />
+ 
     
-   
+      <Divider />
+      </div>
   </Paper>
 
 

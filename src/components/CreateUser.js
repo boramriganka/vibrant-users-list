@@ -42,10 +42,10 @@ const CreateUser = () => {
 
     setOpen(false);
   };
-  const paperStyle = { display:"flex",flexDirection:"column",padding: "2rem 0", height: 'auto', width: "70vw",  maxWidth:"500px", margin:"5vh 0" }
+  const paperStyle = { display: "flex", flexDirection: "column", padding: "2rem 0", height: 'auto', width: "70vw", maxWidth: "500px", margin: "5vh 0" }
   const inputStyle = { padding: "0 30", width: '75%', height: "5rem", margin: "0 2rem" }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
-  const btnstyle = { width:"5rem" }
+  const btnstyle = { width: "5rem" }
 
   /********saving to locastroage part starts********* */
 
@@ -69,15 +69,7 @@ const CreateUser = () => {
     }
   }
 
-  const formik = useFormik({
-    initialValues: {
-      name:'',
-      email: '',
-      password: '',
-    },
-    validationSchema: validationSchema,
 
-  });
   const onSubmit = (values, submitProps) => {
     addUser(values);
     console.log("userarray", userArray);
@@ -89,17 +81,59 @@ const CreateUser = () => {
 
   console.log("submitting......", JSON.stringify(localStorage.getItem("users"), null, 2))
 
-  /********saving to locastroage part starts********* */
+  /********saving to locastroage part ends********* */
+
+
+  /****custome snackbar component*** */
+
+  const customSnackbar = (obj) => {
+    console.log(obj)
+    return (
+
+      Object.keys(obj).map((value, index) => (
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={open}
+          autoHideDuration={100000}
+          onClose={handleClose}
+          message={<ErrorMessage name={value}>
+            {error => <div className='error'>{error}</div>}
+          </ErrorMessage>
+          }
+          action={
+            <React.Fragment>
+              <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
+      ))
+    )
+  }
+
 
   return (
     <Formik
-
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       enableReinitialize
     >
-      {formik => {
+      {(formik) => {
+        const {
+          values,
+          handleChange,
+          handleSubmit,
+          errors,
+          touched,
+          handleBlur,
+          isValid,
+          dirty
+        } = formik;
         return (
           <Grid>
             <Paper elevation={5} style={paperStyle}>
@@ -116,10 +150,11 @@ const CreateUser = () => {
                       variant="outlined"
                       autoComplete="off"
                       type="text"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="name"
                       placeholder="name"
-                      value={formik.values.name}
+                      value={values.name}
                       rows={"3"}
                     />
                   </Grid>
@@ -135,11 +170,12 @@ const CreateUser = () => {
                       style={inputStyle}
                       id="outlined-basic" variant="outlined"
                       autoComplete="off"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="email"
                       type="text"
                       placeholder="email"
-                      value={formik.values.email}
+                      value={values.email}
                       rows={"3"}
                     />
                   </Grid>
@@ -154,11 +190,12 @@ const CreateUser = () => {
                     <TextField
                       style={inputStyle}
                       id="outlined-basic" variant="outlined"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="password"
                       type="text"
                       placeholder="password"
-                      value={formik.values.password}
+                      value={values.password}
                       rows={"3"}
                     />
 
@@ -178,36 +215,9 @@ const CreateUser = () => {
 
               </Form>
             </Paper>
-            <div>
+            <div >
               {
-                //Snackbar for errors
-
-                Object.keys(formik.errors).map((value, index) => (
-                  console.log("error values", value),
-                  <Snackbar
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    }}
-                    open={open}
-                    autoHideDuration={6000}
-                    onClose={handleClose}
-                    message={<ErrorMessage name={value}>
-                      {error => <div className='error'>{error}</div>}
-                    </ErrorMessage>
-                    }
-                    action={
-                      <React.Fragment>
-                        <Button color="secondary" size="small" onClick={handleClose}>
-                          UNDO
-                        </Button>
-                        <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-                          <CloseIcon fontSize="small" />
-                        </IconButton>
-                      </React.Fragment>
-                    }
-                  />
-                ))
+               customSnackbar(errors)
               }
 
             </div>
