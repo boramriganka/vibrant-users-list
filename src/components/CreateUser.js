@@ -7,7 +7,7 @@ import {
   useFormik, Formik, Form, Field,
   ErrorMessage,
 } from "formik";
-import * as yup from 'yup'
+import * as yup from  'yup'
 
 
 const initialValues = {
@@ -227,7 +227,8 @@ const CreateUser = () => {
       }}
     </Formik>
   );
-}
+};
 
 export default CreateUser;
 
+ 
