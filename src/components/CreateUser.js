@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Grid, Paper, Avatar, TextField, Button, Snackbar } from '@material-ui/core'
 import {
-  useFormik, Formik, Form, Field,
+  useFormik, Formik, Form, 
   ErrorMessage,
 } from "formik";
 import * as yup from 'yup'
-
+import useLocalStorageState from '../hooks/useLocalStorageState'
 
 const initialValues = {
   name: '',
@@ -29,7 +29,7 @@ const validationSchema = yup.object({
 
 
 const CreateUser = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -49,14 +49,7 @@ const CreateUser = () => {
 
   /********saving to locastroage part starts********* */
 
-  const [userArray, setUserArray] = useState(() => {
-    const localStorageData = localStorage.getItem("users");
-    return localStorageData ? JSON.parse(localStorageData) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(userArray));
-  }, [userArray])
+  const [userArray, setUserArray] = useLocalStorageState('users',[])
 
   const addUser = (newuser) => {
     let noEmptyFieldExist = (newuser.name.trim() !== "" && newuser.password.trim() !== "" && newuser.email.trim() !== "");
@@ -84,7 +77,7 @@ const CreateUser = () => {
   /********saving to locastroage part ends********* */
 
 
-  /****custome snackbar component*** */
+  /****custom snackbar component*** */
 
   const customSnackbar = (obj) => {
     console.log(obj)
@@ -127,12 +120,8 @@ const CreateUser = () => {
         const {
           values,
           handleChange,
-          handleSubmit,
           errors,
-          touched,
-          handleBlur,
-          isValid,
-          dirty
+          handleBlur
         } = formik;
         return (
           <Grid>

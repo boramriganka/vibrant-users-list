@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import { Grid, Paper, Tabs, Tab } from '@material-ui/core'
+import {Paper, Tabs, Tab } from '@material-ui/core'
 import { useState } from "react";
 
 const navStyle= {
