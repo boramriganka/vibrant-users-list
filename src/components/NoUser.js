@@ -1,8 +1,9 @@
 import React from 'react'
-import { Alert, AlertTitle } from '@material-ui/lab';
+import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
 import { Paper } from '@material-ui/core';
 
-const paperStyle = { display:"flex", padding :10,flexDirection:"column",height: '85vh', width: "100%", marginTop: 0,alignItems:"center",justifyContent:"center" }
+const paperStyle = { display:"flex", padding :10,flexDirection:"column",padding:0, height: '85vh', width: "100%", marginTop: 0,alignItems:"center",justifyContent:"center" }
 const errorStyle = { height: "40vh",alignItems:"center",justifyContent:"center"}
 const  NoUser = () => {
     return (

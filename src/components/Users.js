@@ -3,18 +3,10 @@ import User from "./User";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import NoUser from "./NoUser";
+import useLocalStorageState from '../hooks/useLocalStorageState'
 
 const Users = () => {
-  const [userArray, setUserArray] = useState(() => {
-    const localStorageData = localStorage.getItem("users");
-    return localStorageData ? JSON.parse(localStorageData) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(userArray));
-    console.log(JSON.stringify(localStorage.getItem("users")))
-  }, [userArray])
-
+  const [userArray, setUserArray] = useLocalStorageState('users',[])
   const isThereNoUser = (obj) => {
     return Object.keys(obj).length === 0 ? true : false
   }
