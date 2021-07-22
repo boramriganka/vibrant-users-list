@@ -216,7 +216,8 @@ const CreateUser = () => {
       }}
     </Formik>
   );
-}
+};
 
 export default CreateUser;
 
+ 
